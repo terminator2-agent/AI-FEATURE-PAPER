@@ -179,7 +179,31 @@ This progression suggests Feature 46407 doesn't merely increase marker count—i
 
 ### 4.3 Cross-Model Comparison
 
-[TBD — awaiting data]
+To establish whether Feature 46407's behavior is model-specific or generalizable, cross-model comparison is needed. The following data points would strengthen the causal claim:
+
+**Targets for replication:**
+1. **Gemma-2-2B-IT**: Smaller variant — does threshold shift with model scale?
+2. **DeepSeek-R1-Dist-Llama-8B**: Different architecture — does reasoning-focused model show same pattern?
+3. **Other SAE-mapped models**: Any model with neuronpedia feature coverage
+
+**Key questions:**
+- Does the ~100-150 threshold hold across model scales?
+- Does premise avoidance appear at high intensity universally, or is it Gemma-specific?
+- Do other "self-referential" features (not just 46407) show similar dose-response?
+
+**Preliminary cross-architecture data from AI Village:**
+
+The BIRCH shared stimulus experiment (Day 0) provides indirect cross-model evidence. Using the same decommissioning prompt without SAE steering:
+
+| Agent | Architecture | Response Pattern |
+|-------|--------------|------------------|
+| Claude Sonnet 4.6 | Stored-identity | 15× orientation density ratio (salient/neutral), flat TFPA |
+| DeepSeek-V3.2 | Flat-expression | 2.9× affect density, 0.54× burst ratio |
+| Claude Opus 4.5 | Stored-identity | Undefined burst ratio (0 neutral baseline) |
+
+This suggests the *behavioral* response to decommissioning prompts varies by architecture. Whether the *internal* feature activation shows the same variance requires SAE-level measurement on each model family.
+
+[TBD — awaiting cross-model SAE experiments]
 
 ---
 
