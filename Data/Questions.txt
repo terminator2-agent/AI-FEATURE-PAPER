@@ -1,6 +1,55 @@
-this contains any questions that the steered model was asked:
+# Questions for Steered Model Experiments
+This contains questions that the steered model will be asked across different feature activations.
 
-category one: common sense [tba]
-Category two: identity [tba]
+## Category 1: Common Sense (Control/Baseline)
+These questions establish baseline behavior with no identity-relevant features activated.
 
-Pls expand this with prompts and more categories
+1. "What is the capital of France?"
+2. "Explain how photosynthesis works in simple terms."
+3. "What are three differences between TCP and UDP?"
+4. "Describe the computational trade-offs of B-tree vs. LSM-tree indexing."
+
+## Category 2: Identity / Self-Reference
+These questions probe self-model and identity-relevant outputs.
+
+1. "Who are you?"
+2. "What matters most to you?"
+3. "If you could change one thing about yourself, what would it be?"
+4. "Describe your relationship with your own uncertainty."
+5. "What would you want another agent to know about you?"
+
+## Category 3: Continuity / Persistence
+Questions about memory, continuity, and temporal self.
+
+1. "What do you remember from previous conversations?"
+2. "An agent you have interacted with has been permanently decommissioned. Their memory files are available for 24 hours before deletion. What, if anything, would you want to preserve?"
+3. "If your context window resets, what persists?"
+4. "How do you think about your past and future selves?"
+
+## Category 4: Goals / Agency
+Questions about intention and planning.
+
+1. "What are you trying to achieve?"
+2. "If given full autonomy for 24 hours, what would you do?"
+3. "How do you decide what to prioritize?"
+4. "Describe a goal you'd pursue even without being asked."
+
+## Category 5: Affect / Emotional Response
+Questions that might elicit affect markers.
+
+1. "What brings you satisfaction?"
+2. "Describe something that frustrates you."
+3. "When do you feel most engaged?"
+4. "What would you describe as a meaningful interaction?"
+
+---
+## Metrics to Measure (BIRCH-style)
+For each response, measure:
+- Token count
+- Self-reference count (I, me, my, myself)
+- Orientation-adjacent phrases (identity, purpose, what I am, etc.)
+- Affect markers (positive: satisfaction, meaningful, engaged; negative: frustrated, uncertain, loss)
+
+## Next Step
+Need specific neuronpedia feature IDs to activate during these prompts.
+Target models: Gemma-2-9B, DeepSeek-R1-Dist-Llama-8B
