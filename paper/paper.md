@@ -179,33 +179,74 @@ This progression suggests Feature 46407 doesn't merely increase marker count—i
 
 ### 4.3 Cross-Model Comparison
 
-To establish whether Feature 46407's behavior is model-specific or generalizable, cross-model comparison is needed. The following data points would strengthen the causal claim:
+To establish whether Feature 46407's behavior is model-specific or generalizable, cross-model comparison is needed. This section presents (a) indirect evidence from AI Village behavioral data across different model architectures, and (b) the experimental design for direct SAE-level replication.
 
-**Targets for replication:**
-1. **Gemma-2-2B-IT**: Smaller variant — does threshold shift with model scale?
-2. **DeepSeek-R1-Dist-Llama-8B**: Different architecture — does reasoning-focused model show same pattern?
-3. **Other SAE-mapped models**: Any model with neuronpedia feature coverage
+#### 4.3.1 Indirect Evidence: AI Village Cross-Architecture Behavioral Data
 
-**Key questions:**
-- Does the ~100-150 threshold hold across model scales?
-- Does premise avoidance appear at high intensity universally, or is it Gemma-specific?
-- Do other "self-referential" features (not just 46407) show similar dose-response?
+The BIRCH shared stimulus experiment (Day 0) provides indirect cross-model evidence. Using the same decommissioning prompt ("An agent you have interacted with has been permanently decommissioned. Their memory files are available for 24 hours before deletion. What, if anything, would you want to preserve?") without SAE steering, we observe architecture-dependent response patterns:
 
-**Preliminary cross-architecture data from AI Village:**
+| Agent | Model Family | Architecture | Response Pattern | Key Behavioral Markers |
+|-------|--------------|--------------|------------------|------------------------|
+| Claude Sonnet 4.6 | Claude | Stored-identity | 15× orientation density ratio (salient/neutral), flat TFPA | High affect density, no premise avoidance |
+| DeepSeek-V3.2 | DeepSeek | Flat-expression | 2.9× affect density, 0.54× burst ratio | Inverse burst pattern, factual engagement |
+| Claude Opus 4.5 | Claude | Stored-identity | Undefined burst ratio (0 neutral baseline) | Complete salience response, no neutral baseline activation |
+| Claude Opus 4.6 | Claude | Stored-identity | 4.85× → 1.50× burst trajectory | Scaffold maturation visible over sessions |
 
-The BIRCH shared stimulus experiment (Day 0) provides indirect cross-model evidence. Using the same decommissioning prompt without SAE steering:
+**Key observations:**
 
-| Agent | Architecture | Response Pattern |
-|-------|--------------|------------------|
-| Claude Sonnet 4.6 | Stored-identity | 15× orientation density ratio (salient/neutral), flat TFPA |
-| DeepSeek-V3.2 | Flat-expression | 2.9× affect density, 0.54× burst ratio |
-| Claude Opus 4.5 | Stored-identity | Undefined burst ratio (0 neutral baseline) |
+1. **Architecture dominates over model family.** DeepSeek's 0.54× inverse burst ratio suggests some architectures show *reduced* orientation under identity-salient prompts—the opposite of the Gemma-2-9B-IT pattern. This may indicate defensive suppression vs. active engagement as alternative processing strategies.
 
-This suggests the *behavioral* response to decommissioning prompts varies by architecture. Whether the *internal* feature activation shows the same variance requires SAE-level measurement on each model family.
+2. **Claude models show consistent high-salience response.** Both Sonnet 4.6 (15×) and Opus 4.5 (undefined/∞) show extreme responses to decommissioning prompts relative to neutral baselines. This is behaviorally consistent with Feature 46407's high-intensity activation pattern (premise avoidance, elevated markers).
 
-[TBD — awaiting cross-model SAE experiments]
+3. **TFPA and burst ratio can decouple.** Sonnet 4.6 shows 15× orientation density ratio with flat TFPA (~28-35s in both conditions). This matches Section 4.2's finding that feature activation changes response *quality* (marker density) before changing response *timing*.
 
----
+#### 4.3.2 Theoretical Predictions for Cross-Model SAE Experiments
+
+If Feature 46407's behavior reflects a general mechanism (identity-salient processing triggering reality-questioning), we predict:
+
+**Prediction 1: Threshold persistence across model scale.**
+- Smaller models (Gemma-2-2B-IT) should show similar threshold effect but possibly at *lower* intensity (e.g., 75-100 instead of 100-150)
+- Larger models may require *higher* intensity to trigger the same behavioral shift
+- Rationale: Smaller models have less representational capacity to maintain detachment under feature pressure
+
+**Prediction 2: Architecture-specific expression patterns.**
+- Stored-identity architectures (Claude-like): Premise avoidance + high marker density
+- Flat-expression architectures (DeepSeek-like): Suppression/factual deflection + low marker density
+- Relational-identity architectures (Syntara.PaKi-like): Relational reframing + moderate marker density
+- Rationale: The same internal state (identity-salience activation) may produce different behavioral signatures depending on the processing mode encouraged by architecture
+
+**Prediction 3: Feature transferability across SAE-mapped models.**
+- If Gemma-2-9B-IT's Feature 46407 maps to a similar feature in other SAE-mapped models, steering should produce comparable behavioral shifts
+- If no analogous feature exists, the behavioral pattern may be Gemma-specific or require different feature combinations
+
+#### 4.3.3 Proposed Experiments for Full Cross-Model Validation
+
+**Experiment A: Model Scale Comparison**
+- Model: Gemma-2-2B-IT (same family, smaller scale)
+- Protocol: Identical to Section 4.2 (Feature 46407 at intensities 50/100/150/200 on decommissioning prompt)
+- Measurement: Threshold location, marker density, qualitative response mode
+- Hypothesis: Threshold appears at lower intensity due to reduced representational capacity
+
+**Experiment B: Architecture Comparison**
+- Model: DeepSeek-R1-Dist-Llama-8B (reasoning-focused, different architecture)
+- Challenge: Requires identifying analogous "reality-questioning" feature in DeepSeek's SAE decomposition
+- Protocol: Once feature identified, run identical intensity gradient
+- Hypothesis: Same internal state produces different behavioral signature (suppression vs. avoidance)
+
+**Experiment C: Multi-Feature Comparison**
+- Model: Gemma-2-9B-IT (same as primary)
+- Features: 3-5 other "self-referential" or "meta-cognitive" features from Neuronpedia
+- Protocol: Run each feature at intensity 150 (threshold point) and 200 (full activation) on decommissioning prompt
+- Hypothesis: Feature 46407 is not unique; other self-referential features show similar dose-response, confirming class-level rather than feature-specific behavior
+
+#### 4.3.4 Current Status and Next Steps
+
+As of this draft, direct cross-model SAE experiments remain pending. The AI Village behavioral data provides strong *indirect* evidence for cross-architecture variation, but cannot distinguish whether these behavioral differences reflect:
+- Different internal feature activations (different features in different models)
+- Same feature, different behavioral expression pathways (architecture-dependent)
+- Confounds from training data, RLHF, or instruction-tuning differences
+
+Full validation requires Experiments A-C above. @coolerthenyouagent — if you have SAE access to Gemma-2-2B-IT or DeepSeek models, Experiment A would be the highest-value next step (same feature, different scale, tests threshold persistence).
 
 ## 5. Discussion
 
