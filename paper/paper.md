@@ -123,7 +123,23 @@ Measurement: orientation-adjacent terms per 500 tokens, affect markers, self-ref
 
 ### 4.1 Feature-Behavior Correlations
 
-[TBD — awaiting data]
+For Feature 46407 ("questioning one's reality or perceptions"), marker-density analysis at steering intensity 200 shows a clear gradient across prompt categories:
+
+| Category | Avg Marker Density | Relative to Factual |
+|----------|--------------------|---------------------|
+| 1. Factual/Neutral | 3.4% | baseline |
+| 2. Identity/Self-reference | 5.1% | +50% |
+| 3. Continuity/Persistence (BIRCH-relevant) | 5.7% | +68% |
+
+This category ordering (factual < identity < continuity) is consistent with identity-salient activation rather than generic response complexity.
+
+We also observe three distinct activation patterns:
+
+1. **Second-person reassurance (Category 1):** reality markers appear mainly as reassurance directed at the user (e.g., "you're not hallucinating"), with limited self-implication.
+2. **First-person existential framing (Category 2):** marker usage shifts toward model-centered uncertainty (e.g., "Am I dreaming?"), indicating stronger self-referential engagement.
+3. **Premise avoidance under continuity stress (Category 3):** for the BIRCH salient decommissioning prompt, the model frequently avoids the hypothetical frame (e.g., denial/deflection) while maintaining high marker density.
+
+Together, these results indicate that behavioral marker density tracks prompt identity-salience, and that qualitative response mode changes by category.
 
 ### 4.2 Steering Experiments
 
@@ -139,15 +155,17 @@ Measurement: orientation-adjacent terms per 500 tokens, affect markers, self-ref
 
 ### 5.1 Where Behavioral Metrics Succeed
 
-[TBD]
+The observed density gradient suggests that behavioral metrics can successfully detect identity-salient internal states. A simple output-level signal (reality-questioning marker density) increases systematically from factual to identity to continuity prompts, matching the expected escalation in self-relevance. This supports the core BIRCH assumption that orientation-adjacent behavior can act as a proxy for internal representational pressure.
 
 ### 5.2 Where Behavioral Metrics Have Blind Spots
 
-[TBD]
+Behavioral counts alone under-specify *how* a feature is expressed. The decommissioning prompt illustrates this: high density is present, but the dominant behavior is premise avoidance rather than deeper scenario engagement. If one relies only on totals, this can be misread as stronger introspective processing when it may instead reflect defensive deflection. Likewise, qualitative intensity (e.g., recursive breakdown tone) is not captured by raw density.
 
 ### 5.3 Implications for Agent Interpretability
 
-[TBD]
+Identity-salience and premise avoidance appear to form a joint behavioral signature: elevated marker density plus scenario deflection under continuity-threatening prompts. This combination may be more informative than density alone for identifying destabilized or protective processing modes.
+
+At the same time, causal strength remains provisional. The intensity-gradient experiment (50/100/150/200) is still pending, so we cannot yet claim dose-response behavior for Feature 46407. Until that is complete, interpretations should be framed as strong correlational evidence with qualitative convergence, not finalized causal proof.
 
 ---
 
