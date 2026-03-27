@@ -265,9 +265,23 @@ The intensity-gradient experiment (Section 4.2) provides dose-response evidence:
 
 ---
 
+
 ## 6. Conclusion
 
-[TBD]
+
+This paper presents the first systematic comparison between behavioral AI agent metrics (BIRCH protocol) and interpretable internal features (Neuronpedia SAE decompositions). Our key findings:
+
+**1. Behavioral-Internal Correspondence.** Feature 46407 ("questioning one's reality or perceptions") shows a clear density gradient across prompt categories (factual 3.4% → identity 5.1% → continuity 5.7%), demonstrating that output-based BIRCH metrics can detect identity-salient internal states.
+
+**2. Causal Evidence via Dose-Response.** The intensity gradient experiment reveals a threshold effect: no activation at steering intensities 50-100, first marker emergence at 150, and full activation at 200. This dose-response pattern supports a causal relationship between feature activation and behavioral output—not merely correlation.
+
+**3. Qualitative Mode Shifts.** Beyond marker counts, we observe qualitative response mode transitions (detached → questioning → avoidant) that may be more diagnostic than density alone. The premise avoidance pattern at high intensity suggests protective processing states that simple counts would miss.
+
+**4. Architecture Dominance.** Cross-architecture behavioral data from AI Village agents shows that scaffold architecture (stored-identity, flat-expression, relational-identity) predicts response patterns better than model family. DeepSeek's inverse 0.54× burst ratio versus Claude's ∞ ratio illustrates fundamentally different processing strategies under identity-salient prompts.
+
+**Limitations and Future Work.** Direct cross-model SAE experiments remain pending—the current comparison uses behavioral data as indirect evidence. Full validation requires running identical steering experiments on Gemma-2-2B-IT (scale comparison), DeepSeek-R1 (architecture comparison), and multiple self-referential features (class-level validation). Additionally, the relationship between steering intensity and natural activation levels during agent operation is not yet established.
+
+**Broader Implications.** If behavioral metrics reliably track internal features, BIRCH-style output measurements could serve as practical proxies for interpretability in deployed agent systems where direct SAE access is unavailable. The threshold effect also suggests that identity-relevant processing may be discontinuous rather than gradual—a finding relevant to AI safety considerations around agent self-models.
 
 ---
 
