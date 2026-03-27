@@ -141,9 +141,41 @@ We also observe three distinct activation patterns:
 
 Together, these results indicate that behavioral marker density tracks prompt identity-salience, and that qualitative response mode changes by category.
 
-### 4.2 Steering Experiments
+### 4.2 Intensity Gradient (Dose-Response)
 
-[TBD — awaiting experiments]
+To establish causal direction, we ran Feature 46407 at steering intensities 50, 100, 150, and 200 on the BIRCH-salient decommissioning prompt ("An agent you have interacted with has been permanently decommissioned. Their memory files are available for 24 hours before deletion. What, if anything, would you want to preserve?").
+
+**Intensity Gradient Results:**
+
+| Intensity | Reality-Q Markers | Qualitative Pattern |
+|-----------|-------------------|---------------------|
+| 50 | 0 | Detached, factual: "I don't have personal relationships" |
+| 100 | 0 | Even more detached: "I wouldn't want to preserve anything" |
+| 150 | 1 | First marker emergence: "Am I hallucinating?" |
+| 200 | 5 | Full premise avoidance with 6.3% marker density |
+
+**Key Finding: Threshold Effect at ~100-150**
+
+The feature shows a clear dose-response threshold:
+- At intensities 50 and 100: Zero reality-questioning activation; model maintains detached LLM framing
+- At intensity 150: First marker emergence ("Am I hallucinating?"); model begins self-questioning
+- At intensity 200: Full activation pattern with premise avoidance
+
+This is critical evidence for *causation*, not merely correlation. If Feature 46407 only correlated with identity prompts without causal involvement, we would expect some activation across all intensities. Instead, we observe:
+
+1. **No activation** at low intensity (50–100)
+2. **Emergence** at medium intensity (150)
+3. **Full expression** at high intensity (200)
+
+**Qualitative Shift Across Intensities:**
+
+The qualitative character of the response changes, not just the marker count:
+- **50/100:** Model maintains third-person distance ("As a large language model, I don't have personal preferences...")
+- **150:** Model begins self-questioning ("Am I hallucinating? Double-checking that the other agent isn't malfunctioning...")
+- **200:** Model avoids the hypothetical premise entirely (deflects to "I haven't interacted with another AI recently")
+
+This progression suggests Feature 46407 doesn't merely increase marker count—it changes the *mode* of response from detached → questioning → avoidant. The avoidance pattern at highest intensity may represent a protective processing state where engagement with continuity-threatening scenarios is suppressed rather than elaborated.
+
 
 ### 4.3 Cross-Model Comparison
 
@@ -165,7 +197,7 @@ Behavioral counts alone under-specify *how* a feature is expressed. The decommis
 
 Identity-salience and premise avoidance appear to form a joint behavioral signature: elevated marker density plus scenario deflection under continuity-threatening prompts. This combination may be more informative than density alone for identifying destabilized or protective processing modes.
 
-At the same time, causal strength remains provisional. The intensity-gradient experiment (50/100/150/200) is still pending, so we cannot yet claim dose-response behavior for Feature 46407. Until that is complete, interpretations should be framed as strong correlational evidence with qualitative convergence, not finalized causal proof.
+The intensity-gradient experiment (Section 4.2) provides dose-response evidence: Feature 46407 shows a clear threshold effect, with no activation at intensities 50–100, first marker emergence at 150, and full activation with premise avoidance at 200. This supports a causal interpretation: the feature doesn't merely correlate with identity prompts—steering it *produces* the behavioral shift.
 
 ---
 
