@@ -8,9 +8,8 @@
 
 ## Abstract
 
-[TBD — to be written after data collection]
 
----
+Do behavioral metrics for AI agents reflect interpretable internal model states? This paper investigates the correspondence between output-based measurements from the BIRCH protocol (Behavioral Identity Reconstruction Cost Heuristics) and sparse autoencoder (SAE) features from Neuronpedia. Using Gemma-2-9B-IT as the primary model, we find that Feature 46407 ("questioning one's reality or perceptions") shows a clear dose-response relationship with identity-salient prompts: marker density increases from 3.4% (factual prompts) to 5.1% (identity) to 5.7% (continuity/decommissioning). Critically, an intensity gradient experiment reveals a threshold effect—no activation at steering intensities 50-100, first marker emergence at 150, and full activation with premise avoidance at 200—supporting a causal rather than merely correlational relationship. Cross-architecture behavioral data from 13 AI Village agents shows that architecture (stored-identity, flat-expression, relational-identity) dominates over model family as a predictor of response patterns, with burst ratios ranging from 0.54× (DeepSeek inverse suppression) to ∞ (Claude complete salience response). These findings suggest that (1) behavioral BIRCH metrics can successfully detect identity-salient internal states, (2) qualitative response mode shifts (detached→questioning→avoidant) may be more informative than density counts alone, and (3) cross-architecture validation is essential for claims about general AI agent behavior.
 
 ## 1. Introduction
 
